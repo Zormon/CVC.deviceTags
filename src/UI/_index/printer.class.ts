@@ -3,11 +3,12 @@ import type {PrinterConf, TagData, Rotation} from '../../types.js'
 export class Printer {
     ip:string
     port:number
-    fetching:boolean = false
+    fetching = false
     eposURL:string
-    w:number = 300
-    h:number = 512
+    w = 300
+    h = 512
     template:HTMLImageElement
+    feed = 70
     
     constructor(conf:PrinterConf) {
         this.ip = conf.ip
@@ -56,8 +57,10 @@ export class Printer {
         // deviceType
         let type
         switch (data.deviceType) {
-            case 'canal': type = 'TV publi + hilo musical'; break
-            case 'turnos': type = 'TV turnos + hilo musical'; break
+            case 'canal+m': type = 'TV publi + hilo musical'; break
+            case 'turnos+m': type = 'TV turnos / hilo musical'; break
+            case 'canal': type = 'TV publi'; break
+            case 'turnos': type = 'TV turnos'; break
             case 'totem': type = 'Dispensador de turnos'; break
             case 'tablet': type = 'Tablet / pasaturnos'; break
             case 'LED': type = 'Pantalla LED'; break
@@ -72,10 +75,15 @@ export class Printer {
 
     async printCanvas(canvas:HTMLCanvasElement) {
         const ctx = canvas.getContext("2d"); if (!ctx) { return }
-        const imageData = ctx.getImageData(0,0,canvas.width,canvas.height)
-        const raster = this.toMonoImage( imageData )
+        
+        const imageData1 = ctx.getImageData(0,0,canvas.width, this.feed)
+        const imageData2 = ctx.getImageData(0,this.feed,canvas.width,canvas.height-this.feed)
+        const raster1 = this.toMonoImage( imageData1 )
+        const raster2 = this.toMonoImage( imageData2 )
         let printData = '<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><epos-print xmlns="http://www.epson-pos.com/schemas/2011/03/epos-print">'
-        printData += `<image width="${canvas.width}" height="${canvas.height}" color="color_1" mode="mono">${btoa(raster)}</image>`
+        printData += `<image width="${canvas.width}" height="${this.feed}">${btoa(raster1)}</image>`
+        printData += '<cut type="no_feed" />'
+        printData += `<image width="${canvas.width}" height="${canvas.height-this.feed}">${btoa(raster2)}</image>`
         printData += '<cut type="feed" />'
         printData += '</epos-print></s:Body></s:Envelope>'
 
