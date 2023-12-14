@@ -1,0 +1,15 @@
+{
+  "name": "devtags",
+  "productName": "devtags",
+  "version": "1.0.0",
+  "description": "Generador de etiquetas para equipos",
+  "main": "dist/main/main.js",
+  "author": "Comunicacion Visual Canarias",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "28.0.0"
+  }
+}

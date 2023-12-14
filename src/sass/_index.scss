@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    #template {
+        position: absolute;
+        top: 0; left: 0;
+    }
+
+    #tag {
+        height: 512px;
+        position: relative;
+        width: 300px;
+
+
+        #tagData {
+            input[type="text"], input[type="number"], select, textarea {
+                position: absolute;
+                width: 235px;
+                height: 44px;
+                left: 60px;
+            }
+    
+            #client {
+                top: 95px;
+                width: 170px;
+            }
+        
+            #id {
+                top: 95px;
+                left: 235px;
+                width: 60px;
+            }
+    
+            #shop { top: 158px; }
+    
+            #ip { 
+                top: 221px;
+                width: 170px;
+             }
+    
+            #subnet {
+                top: 221px;
+                left: 235px;
+                width: 60px;
+            }
+    
+            #router { top: 284px; }
+    
+            #deviceType { top: 347px; }
+    
+            #notes { 
+                top: 410px;
+                left: 6px;
+                width: 289px;
+                height: 97px;
+                resize: none;
+             }
+        }
+    }
+
+    #print {
+        width: 100%;
+        border: 0;
+        height: 50px;
+        background-color: bisque;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
+}
+
+

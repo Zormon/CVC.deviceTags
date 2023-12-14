@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impresora etiquetas</title>
+    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="tag">
+        <img id="template" src="./tagTemplate.png?2">
+
+        <form id="tagData">
+            <input type="text" maxlength="20" id="client" placeholder="Cliente">
+            <input type="number" min="0" max="999" id="id" placeholder="id" value="0" required>
+            <input type="text" maxlength="25" id="shop" placeholder="Tienda">
+            <input type="text" id="ip" placeholder="IP" pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$">
+            <input type="number" min="1" max="64" id="subnet" placeholder="Subnet" value="24">
+            <input type="text" id="router" placeholder="Router" pattern="^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$">
+            <select id="deviceType">
+                <option value="canal">Canal</option>
+                <option value="turnos">Turnos</option>
+                <option value="totem">Totem</option>
+                <option value="tablet">Tablet</option>
+                <option value="LED">LED</option>
+                <option value="otro">Otro</option>
+            </select>
+            <textarea id="notes" placeholder="Notas"></textarea>
+        </form>
+    </div>
+
+    <button id="print"> <small>(Ctrl+p)</small></button>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Configuracion - Impresora etiquetas</title>
+    <script type="module" src="config.js"></script>
+    <link rel="stylesheet" href="config.css">
+  </head>
+  <body class="config">
+      <form id="config">       
+        <fieldset>
+          <legend>Impresión</legend>
+          <div class="flex-row">
+            <input class="col" type="text" id="printerIp" placeholder="127.0.0.1" required pattern="(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)_*(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)_*){3}">
+            <input class="col" type="number" id="printerPort" placeholder="8008" required maxlength="5">
+          </div>
+
+          <div class="flex-row">
+            <label class="flex-2" for="printerPreviewDelay">Duracion de preview</label>
+            <input class="flex-1" type="number" min="0" max="20" id="printerPreviewDelay">
+          </div>
+          
+          <div>
+            <input type="checkbox" id="printerEnabled">
+            <label for="printerEnabled">Imprimir</label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Desarrollo</legend>
+          <div>
+            <input type="checkbox" id="autoOpenDevTools">
+            <label for="autoOpenDevTools">Abrir consola al iniciar</label>
+          </div>
+        </fieldset>
+
+        <button id="save">Aplicar</button>
+      </form>
+  </body>
+</html>
