@@ -19,7 +19,7 @@ export type PrinterConf = {
     port: number
 }
 
-type DeviceType = 'canal' | 'turnos' | 'totem' | 'tablet' | 'LED' | 'otro'
+type DeviceType = 'canal' | 'canal+m' | 'turnos' | 'turnos+m' | 'totem' | 'tablet' | 'LED' | 'otro'
 export type TagData = {
     id:number
     client:string
